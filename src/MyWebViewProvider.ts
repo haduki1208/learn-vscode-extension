@@ -49,7 +49,7 @@ export class MyWebviewProvider implements vscode.WebviewViewProvider {
 }
 
 /**
- * webviewに表示するhtmlを取得
+ * htmlファイルを取得
  */
 function getHtml(path: string): string {
   return fs.readFileSync(path, { encoding: "utf-8" });
@@ -64,6 +64,11 @@ type HtmlParams = {
   styleUri: string;
 };
 
+/**
+ * htmlにpathを埋め込む
+ * @param html 文字列を埋め込むhtml文字列
+ * @param params scriptのsrc, cssのhrefなど埋め込む予定の文字列
+ */
 function bindParamsHtml(html: string, params: HtmlParams): string {
   const cspSourceRegExp = /\$\{cspSource\}/g;
   const nonceRegExp = /\$\{nonce\}/g;
