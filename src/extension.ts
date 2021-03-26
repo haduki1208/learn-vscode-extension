@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
-import { MyTreeProvider } from "./MyTreeProvider";
-import { MyWebviewProvider } from "./MyWebViewProvider";
+import { MyTreeProvider } from "./providers/MyTreeProvider/MyTreeProvider";
+import { MyWebviewProvider } from "./providers/MyWebViewProvider/MyWebViewProvider";
 
 // 拡張機能起動時に実行される
 export function activate(context: vscode.ExtensionContext) {
