@@ -8,13 +8,16 @@ export class MyWebviewProvider implements vscode.WebviewViewProvider {
 
   private _view?: vscode.WebviewView;
 
+  // eslint-disable-next-line no-useless-constructor
   constructor(private readonly _extensionUri: vscode.Uri) {}
 
-  public resolveWebviewView(
-    webviewView: vscode.WebviewView,
-    context: vscode.WebviewViewResolveContext,
-    _token: vscode.CancellationToken
-  ) {
+  /**
+   * interface実装
+   * @param webviewView {vscode.WebviewView}
+   * @param context {vscode.WebviewViewResolveContext}
+   * @param token {vscode.CancellationToken}
+   */
+  public resolveWebviewView(webviewView: vscode.WebviewView): void {
     this._view = webviewView;
 
     webviewView.webview.options = {

@@ -3,7 +3,7 @@ import { MyTreeProvider } from "./providers/MyTreeProvider/MyTreeProvider";
 import { MyWebviewProvider } from "./providers/MyWebViewProvider/MyWebViewProvider";
 
 // 拡張機能起動時に実行される
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): void {
   // my-activitybarアクティビティにtreeコンテンツを設定する
   // 関連: activationEvents onView:id
   // 関連: views.my-tree
@@ -24,4 +24,6 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // 拡張機能終了時に実行される
-export function deactivate() {}
+export function deactivate(): void {
+  // 何もしない
+}

@@ -4,11 +4,19 @@ import { MyTreeItem } from "./MyTreeItem";
 export class MyTreeProvider implements vscode.TreeDataProvider<MyTreeItem> {
   public static readonly viewType = "my-tree";
 
+  /**
+   * interface実装
+   * @param element {MyTreeItem}
+   */
   public getTreeItem(element: MyTreeItem): vscode.TreeItem {
     return element;
   }
 
-  public getChildren(element?: MyTreeItem): Thenable<Array<MyTreeItem>> {
+  /**
+   * interface実装
+   * @param element {MyTreeItem}
+   */
+  public getChildren(): vscode.ProviderResult<Array<MyTreeItem>> {
     return Promise.resolve(this._getListItems());
   }
 

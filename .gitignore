@@ -3,3 +3,7 @@ dist
 node_modules
 .vscode-test/
 *.vsix
+.cache
+
+media/main.js
+media/main.js.map

@@ -46,20 +46,35 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "lint": "eslint src --ext ts,tsx",
+    "lint:fix": "eslint --fix src --ext ts,tsx",
+    "test": "node ./out/test/runTest.js",
+    "dev:my-webview": "parcel ./src/components/MyWebview/index.html --target browser",
+    "build:my-webview": "parcel build ./src/components/MyWebview/index.tsx --out-file main.js  --out-dir media --target browser"
   },
   "devDependencies": {
-    "@types/vscode": "^1.54.0",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-typescript": "^7.13.0",
     "@types/glob": "^7.1.3",
     "@types/mocha": "^8.0.4",
     "@types/node": "^12.11.7",
-    "eslint": "^7.19.0",
+    "@types/vscode": "^1.54.0",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.23.0",
+    "eslint-config-preact": "^1.1.3",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "glob": "^7.1.6",
     "mocha": "^8.2.1",
+    "parcel-bundler": "^1.12.5",
+    "prettier": "^2.2.1",
     "typescript": "^4.1.3",
     "vscode-test": "^1.5.0"
+  },
+  "dependencies": {
+    "preact": "^10.5.13"
   }
 }

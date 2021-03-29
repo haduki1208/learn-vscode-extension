@@ -7,7 +7,7 @@ export class MyTreeItem extends vscode.TreeItem {
     public readonly collapsibleState: vscode.TreeItemCollapsibleState
   ) {
     super(label, collapsibleState);
-    this.tooltip = `${this.label}-${this.version}`;
-    this.description = this.version;
+    this.tooltip = `${label}-${version}`;
+    this.description = version;
   }
 }
