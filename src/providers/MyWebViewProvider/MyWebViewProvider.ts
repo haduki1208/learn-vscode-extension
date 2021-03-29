@@ -1,11 +1,13 @@
 import * as vscode from "vscode";
-import { getNonce } from "./getNonce";
+import * as path from "path";
 import { createHtml } from "./createHtml";
 
 export class MyWebviewProvider implements vscode.WebviewViewProvider {
   public static readonly viewType = "my-webview";
 
-  private _view?: vscode.WebviewView;
+  private static readonly jsPath = "media/main.js";
+
+  private static readonly stylePath = "media/main.css";
 
   // eslint-disable-next-line no-useless-constructor
   constructor(private readonly _extensionUri: vscode.Uri) {}
@@ -17,12 +19,13 @@ export class MyWebviewProvider implements vscode.WebviewViewProvider {
    * @param token {vscode.CancellationToken}
    */
   public resolveWebviewView(webviewView: vscode.WebviewView): void {
-    this._view = webviewView;
-
     webviewView.webview.options = {
       // scriptの実行を許可する
       enableScripts: true,
-      localResourceRoots: [this._extensionUri],
+      // mediaディレクトリのアクセスのみを許可する
+      localResourceRoots: [
+        vscode.Uri.file(path.join(this._extensionUri.fsPath, "media")),
+      ],
     };
 
     webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
@@ -33,16 +36,18 @@ export class MyWebviewProvider implements vscode.WebviewViewProvider {
    */
   private _getHtmlForWebview(webview: vscode.Webview) {
     const scriptUri = webview
-      .asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "media/main.js"))
+      .asWebviewUri(
+        vscode.Uri.joinPath(this._extensionUri, MyWebviewProvider.jsPath)
+      )
       .toString();
     const styleUri = webview
-      .asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "media/main.css"))
+      .asWebviewUri(
+        vscode.Uri.joinPath(this._extensionUri, MyWebviewProvider.stylePath)
+      )
       .toString();
-    const nonce = getNonce();
 
     return createHtml({
       cspSource: webview.cspSource,
-      nonce,
       scriptUri,
       styleUri,
     });

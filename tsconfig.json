@@ -16,6 +16,6 @@
     // "noUnusedParameters": true,  /* Report errors on unused parameters. */
     "skipLibCheck": true /* Skip type checking of declaration files. */
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "index.d.ts"],
   "exclude": ["node_modules", ".vscode-test"]
 }
