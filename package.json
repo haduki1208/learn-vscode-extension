@@ -49,8 +49,9 @@
     "lint": "eslint src --ext ts,tsx",
     "lint:fix": "eslint --fix src --ext ts,tsx",
     "test": "node ./out/test/runTest.js",
-    "dev:my-webview": "parcel ./src/components/MyWebview/index.html --target browser",
-    "build:my-webview": "parcel build ./src/components/MyWebview/index.tsx --out-file main.js  --out-dir media --target browser"
+    "//": "minifyしない。webview内でのソースマップの参照の仕方が分からない",
+    "dev:my-webview": "parcel build ./src/providers/MyWebViewProvider/components/index.tsx --out-file main.js --out-dir media --no-minify",
+    "prod:my-webview": "parcel build ./src/providers/MyWebViewProvider/components/index.tsx --out-file main.js --out-dir media --no-source-maps"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
