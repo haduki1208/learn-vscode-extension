@@ -1,7 +1,6 @@
 import * as vscode from "vscode";
 import { getNonce } from "./getNonce";
-import { getHtml } from "./getHtml";
-import { bindParamsHtml } from "./bindParamsHtml";
+import { createHtml } from "./createHtml";
 
 export class MyWebviewProvider implements vscode.WebviewViewProvider {
   public static readonly viewType = "my-webview";
@@ -33,8 +32,6 @@ export class MyWebviewProvider implements vscode.WebviewViewProvider {
    * webviewに表示するhtmlを取得
    */
   private _getHtmlForWebview(webview: vscode.Webview) {
-    const htmlUri = vscode.Uri.joinPath(this._extensionUri, "media/main.html");
-    const htmlTemplate = getHtml(htmlUri.fsPath);
     const scriptUri = webview
       .asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "media/main.js"))
       .toString();
@@ -43,7 +40,7 @@ export class MyWebviewProvider implements vscode.WebviewViewProvider {
       .toString();
     const nonce = getNonce();
 
-    return bindParamsHtml(htmlTemplate, {
+    return createHtml({
       cspSource: webview.cspSource,
       nonce,
       scriptUri,
