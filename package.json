@@ -80,5 +80,10 @@
   },
   "dependencies": {
     "preact": "^10.5.13"
-  }
+  },
+  "author": {
+    "name": "haduki1208",
+    "url": "https://github.com/haduki1208"
+  },
+  "license": "MIT"
 }
