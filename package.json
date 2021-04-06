@@ -42,6 +42,7 @@
     }
   },
   "scripts": {
+    "package": "vsce package",
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
@@ -84,6 +85,10 @@
   "author": {
     "name": "haduki1208",
     "url": "https://github.com/haduki1208"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haduki1208/learn-vscode-extension"
   },
   "license": "MIT"
 }
